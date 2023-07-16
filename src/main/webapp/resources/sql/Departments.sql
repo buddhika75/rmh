@@ -1,1 +1,1 @@
-select `ID`,`NAME`,`RETIRED` from department where name like 'Hospital Pharmacy';
+select `ID`,`NAME`,`RETIRED` from DEPARTMENT;

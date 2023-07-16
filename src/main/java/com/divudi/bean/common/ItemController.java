@@ -541,7 +541,7 @@ public class ItemController implements Serializable {
             sql = "select c.item from ItemsDistributors c"
                     + " where c.retired=false "
                     + " and c.item.retired=false "
-                    + " and c.institution=:ins and (upper(c.item.name) like :q or "
+                    + " and c.institution=:ins and ((c.item.name) like :q or "
                     + " upper(c.item.barcode) like :q or upper(c.item.code) like :q )order by c.item.name";
             hm.put("ins", getInstituion());
             hm.put("q", "%" + query + "%");
@@ -590,7 +590,7 @@ public class ItemController implements Serializable {
                 tmpMap.put("types", Arrays.asList(itemClasses));
             }
 
-            sql += " and (upper(c.name) like :q or upper(c.code) like :q or upper(c.barcode) like :q  ) ";
+            sql += " and ((c.name) like :q or upper(c.code) like :q or upper(c.barcode) like :q  ) ";
             tmpMap.put("q", "%" + query.toUpperCase() + "%");
 
             sql += " order by c.name";
@@ -636,7 +636,7 @@ public class ItemController implements Serializable {
             sql = "select c from Item c where c.retired=false "
                     + " and (type(c)= :amp) and "
                     + " ( c.departmentType is null or c.departmentType!=:dep ) "
-                    + " and (upper(c.name) like :str or upper(c.code) like :str or"
+                    + " and ((c.name) like :str or upper(c.code) like :str or"
                     + " upper(c.barcode) like :str ) order by c.name";
             ////// //// System.out.println(sql);
             tmpMap.put("dep", DepartmentType.Store);
@@ -661,7 +661,7 @@ public class ItemController implements Serializable {
             sql = "select c from Item c where "
                     + " (type(c)= :amp) and "
                     + " ( c.departmentType is null or c.departmentType!=:dep ) "
-                    + " and (upper(c.name) like :str or upper(c.code) like :str or"
+                    + " and ((c.name) like :str or upper(c.code) like :str or"
                     + " upper(c.barcode) like :str ) order by c.name";
             ////// //// System.out.println(sql);
             tmpMap.put("dep", DepartmentType.Store);
@@ -687,7 +687,7 @@ public class ItemController implements Serializable {
 //                    + "where c.retired=false and "
 //                    + "(type(c)= :amp) "
 //                    + "and (c.departmentType=:dep or c.departmentType=:inven )"
-//                    + "and (upper(c.name) like :str or "
+//                    + "and ((c.name) like :str or "
 //                    + "upper(c.code) like :str or "
 //                    + "upper(c.barcode) like :str) "
 //                    + "order by c.name";
@@ -716,7 +716,7 @@ public class ItemController implements Serializable {
 //                    + "where c.retired=false and "
 //                    + "(type(c)= :amp) "
 //                    + "and c.departmentType=:dep "
-//                    + "and (upper(c.name) like :str or "
+//                    + "and ((c.name) like :str or "
 //                    + "upper(c.code) like :str or "
 //                    + "upper(c.barcode) like :str) "
 //                    + "order by c.name";
@@ -744,7 +744,7 @@ public class ItemController implements Serializable {
 //                    + "where c.retired=false and "
 //                    + "(type(c)= :amp) "
 //                    + "and c.departmentType=:dep "
-//                    + "and (upper(c.name) like :str or "
+//                    + "and ((c.name) like :str or "
 //                    + "upper(c.code) like :str or "
 //                    + "upper(c.barcode) like :str) "
 //                    + "order by c.name";
@@ -769,7 +769,7 @@ public class ItemController implements Serializable {
 //            sql = "select c from Item c "
 //                    + "where c.retired=false and "
 //                    + "(type(c)= :amp) "
-//                    + "and (upper(c.name) like :str or "
+//                    + "and ((c.name) like :str or "
 //                    + "upper(c.code) like :str or "
 //                    + "upper(c.barcode) like :str) "
 //                    + "order by c.name";
@@ -809,9 +809,9 @@ public class ItemController implements Serializable {
             suggestions = new ArrayList<>();
         } else {
             if (query.length() > 4) {
-                sql = "select c from Item c where c.retired=false and (type(c)= :amp or type(c)=:ampp ) and (upper(c.name) like '%" + query.toUpperCase() + "%' or upper(c.code) like '%" + query.toUpperCase() + "%' or upper(c.barcode) like '%" + query.toUpperCase() + "%') order by c.name";
+                sql = "select c from Item c where c.retired=false and (type(c)= :amp or type(c)=:ampp ) and ((c.name) like '%" + query.toUpperCase() + "%' or upper(c.code) like '%" + query.toUpperCase() + "%' or upper(c.barcode) like '%" + query.toUpperCase() + "%') order by c.name";
             } else {
-                sql = "select c from Item c where c.retired=false and (type(c)= :amp or type(c)=:ampp ) and (upper(c.name) like '%" + query.toUpperCase() + "%' or upper(c.code) like '%" + query.toUpperCase() + "%') order by c.name";
+                sql = "select c from Item c where c.retired=false and (type(c)= :amp or type(c)=:ampp ) and ((c.name) like '%" + query.toUpperCase() + "%' or upper(c.code) like '%" + query.toUpperCase() + "%') order by c.name";
             }
 
 ////// //// System.out.println(sql);
@@ -1138,7 +1138,7 @@ public class ItemController implements Serializable {
                 + " and type(c)!=:inw "
                 + " and (type(c)=:ser "
                 + " or type(c)=:inv)  "
-                + " and (upper(c.name) like :q or upper(c.fullName) like :q or "
+                + " and ((c.name) like :q or upper(c.fullName) like :q or "
                 + " upper(c.code) like :q or upper(c.printName) like :q ) ";
         if (spcific) {
             sql += " and c.institution=:ins";

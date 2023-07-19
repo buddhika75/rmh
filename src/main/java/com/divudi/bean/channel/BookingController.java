@@ -340,9 +340,9 @@ public class BookingController implements Serializable {
             suggestions = new ArrayList<>();
         } else {
             if (getSpeciality() != null) {
-                sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) and p.speciality.id = " + getSpeciality().getId() + " order by p.person.name";
+                sql = "select p from Staff p where p.retired=false and ((p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) and p.speciality.id = " + getSpeciality().getId() + " order by p.person.name";
             } else {
-                sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
+                sql = "select p from Staff p where p.retired=false and ((p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
             }
             ////// //// System.out.println(sql);
             suggestions = getStaffFacade().findBySQL(sql);
@@ -959,6 +959,7 @@ public class BookingController implements Serializable {
     }
 
     public void calculateFeeBookingNew(List<ServiceSession> lstSs, PaymentMethod paymentMethod) {
+        if(paymentMethod==null) paymentMethod = PaymentMethod.Cash;
         int rowIndex = 0;
         for (ServiceSession ss : lstSs) {
             ss.setDisplayCount(channelBean.getBillSessionsCount(ss, ss.getSessionDate()));

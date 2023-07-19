@@ -810,6 +810,7 @@ public class ChannelBean {
                 + " where s.retired=:ret "
                 + " and s.staff=:staff "
                 + " and s.originatingSession is not null "
+                + " and s.originatingSession.retired=:ret "
                 + " and s.sessionDate between :fd and :td "
                 + " and type(s)=:class "
                 + " and s.institution=:ins "

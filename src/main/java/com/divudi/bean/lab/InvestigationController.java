@@ -576,7 +576,7 @@ public class InvestigationController implements Serializable {
         Map m = new HashMap();
         sql = "select c from Investigation c "
                 + " where c.retired=false  "
-                + " and (upper(c.name) like :n or "
+                + " and ((c.name) like :n or "
                 + " upper(c.fullName) like :n or "
                 + " upper(c.code) like :n or upper(c.printName) like :n ) ";
         sql += " and c.institution = :ins ";
@@ -605,7 +605,7 @@ public class InvestigationController implements Serializable {
         if (institution != null) {
             sql = "select c from Investigation c "
                     + " where c.retired=false  "
-                    + " and (upper(c.name) like :n or "
+                    + " and ((c.name) like :n or "
                     + " upper(c.fullName) like :n or "
                     + " upper(c.code) like :n or upper(c.printName) like :n ) ";
             sql += " and c.institution = :ins ";
@@ -615,7 +615,7 @@ public class InvestigationController implements Serializable {
         } else {
             sql = "select c from Investigation c "
                     + " where c.retired=false  "
-                    + " and (upper(c.name) like :n or "
+                    + " and ((c.name) like :n or "
                     + " upper(c.fullName) like :n or "
                     + " upper(c.code) like :n or upper(c.printName) like :n ) ";
             sql += " and c.institution is null ";
@@ -638,7 +638,7 @@ public class InvestigationController implements Serializable {
         //m.put(m, m);
         sql = "select c from Investigation c "
                 + " where c.retired=false "
-                + " and (upper(c.name) like :n or "
+                + " and ((c.name) like :n or "
                 + " upper(c.fullName) like :n or "
                 + " upper(c.code) like :n or upper(c.printName) like :n ) ";
         ////// //// System.out.println(sql);
@@ -672,7 +672,7 @@ public class InvestigationController implements Serializable {
         //m.put(m, m);
         sql = "select c from Investigation c "
                 + " where c.retired=false "
-                + " and (upper(c.name) like :n or "
+                + " and ((c.name) like :n or "
                 + " upper(c.fullName) like :n or "
                 + " upper(c.code) like :n or upper(c.printName) like :n ) ";
         ////// //// System.out.println(sql);

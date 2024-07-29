@@ -53,6 +53,8 @@
                     <h:outputLabel value="Issued Person : #{cc.attrs.bill.creater.webUserPerson.name} - #{cc.attrs.bill.creater.staff.code}"/>
                     <h:outputLabel value="Issue No : #{cc.attrs.bill.deptId}"/>
                     <h:outputLabel value="Request No : #{cc.attrs.bill.backwardReferenceBill.deptId}"/>
+                    <h:outputLabel value="Request ID : #{cc.attrs.bill.backwardReferenceBill.id}"/>
+                    <h:outputLabel value="Issue ID : #{cc.attrs.bill.id}"/>
                     <h:panelGroup >
                         <h:outputLabel value="Issued Date Time : "/>
                         <h:outputLabel value="#{cc.attrs.bill.createdAt}">

@@ -51,7 +51,7 @@
                                 <h:outputLabel value="#{ph.pharmaceuticalBillItem.qtyInUnit}" />                               
                             </f:facet>                        
                             <f:facet name="input">  
-                                <p:inputText autocomplete="off" id="qty" value="#{ph.tmpQty}" >
+                                <p:inputText autocomplete="off" id="qty" value="#{ph.qty}" >
                                     <f:ajax event="focus" render=":#{p:component('tab')}" execute="@this" listener="#{transferReceiveController.onFocus(ph)}"/>
                                 </p:inputText>
                             </f:facet>

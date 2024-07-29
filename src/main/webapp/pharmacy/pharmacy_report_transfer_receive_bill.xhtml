@@ -63,11 +63,23 @@
                                     </h:outputLabel>
                                 </f:facet>
 
+                                <p:column headerText="ID" sortBy="#{i.deptId}">
+                                    <f:facet name="header">
+                                        <h:outputLabel value="ID"/>
+                                    </f:facet>
+                                    <h:outputLabel value="#{i.id}" ></h:outputLabel>
+                                </p:column>
                                 <p:column headerText="Bill No" sortBy="#{i.deptId}">
                                     <f:facet name="header">
                                         <h:outputLabel value="Bill No"/>
                                     </f:facet>
                                     <h:outputLabel value="#{i.deptId}" ></h:outputLabel>
+                                </p:column>
+                                <p:column headerText="Bill No" sortBy="#{i.deptId}">
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Bill No"/>
+                                    </f:facet>
+                                    <h:outputLabel value="#{i.insId}" ></h:outputLabel>
                                 </p:column>
 
                                 <p:column headerText="Date">

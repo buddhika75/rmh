@@ -11,7 +11,7 @@
             <p:panel>
                 <f:facet name="header">
                     <p:outputLabel value="Select Request For Department : #{sessionController.department.name}"/>                   
-                    <h:panelGrid columns="5" >
+                    <h:panelGrid columns="2" >
                         <h:outputLabel value="From Date"/>
                         <p:calendar styleClass="dateTimePicker" id="fromDate" value="#{searchController.fromDate}" navigator="false" pattern="dd MMMM yyyy hh mm ss a" >      
                         </p:calendar>
@@ -41,7 +41,9 @@
                     rowsPerPageTemplate="5,10,15"
                     >                       
                     <p:column headerText="Issue No">                        
-                        <h:outputLabel value="#{p.deptId}"/>                          
+                        <h:outputLabel value="#{p.deptId}"/>  <br/><!-- comment -->
+                        <h:outputLabel value="#{p.insId}"/>  <br/>
+                        <h:outputLabel value="#{p.id}"/>  
                     </p:column>
                     <p:column headerText="From Department">                       
                         <h:outputLabel value="#{p.department.name}"/>                          
@@ -84,10 +86,17 @@
 
                     </p:column>
 
-                    <p:column headerText="Received">                   
-                        <p:dataTable var="b" value="#{p.forwardReferenceBills}">                           
+                    <p:column headerText="Received">  
+                        <ui:repeat value=  "#{p.forwardReferenceBills}" var="r" >
+                            #{r.id}
+                        </ui:repeat>
+                        <p:dataTable var="b" 
+                                     reflow="true"
+                                     value="#{p.forwardReferenceBills}">                           
                             <p:column  >                                                               
-                                <h:outputLabel  value="#{b.deptId}"/>                                   
+                                <h:outputLabel  value="#{b.deptId}"/>   
+                                <br/>
+                                <h:outputLabel  value="#{b.id}"/> 
                             </p:column>
                             <p:column >
                                 <h:outputLabel value="#{b.createdAt}" >
